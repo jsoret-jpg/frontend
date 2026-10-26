@@ -5,13 +5,16 @@ export async function login(username: string, password: string): Promise<LoginRe
   const form = new URLSearchParams();
   form.append("username", username);
   form.append("password", password);
-  const response = await api.post<LoginResponse>("/auth/login", form, {
+  
+  // ✅ Añadido /api antes de /auth/login
+  const response = await api.post<LoginResponse>("/api/auth/login", form, {
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
   });
   return response.data;
 }
 
 export async function fetchMe(): Promise<CurrentUser> {
-  const response = await api.get<CurrentUser>("/auth/me");
+  // ✅ Añadido /api antes de /auth/me
+  const response = await api.get<CurrentUser>("/api/auth/me");
   return response.data;
 }
