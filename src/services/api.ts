@@ -1,8 +1,13 @@
 import axios from 'axios';
 
+// 1. Asegúrate de incluir 'https://' completo al inicio
+const API_URL = 'https://contratos-gestion.onrender.com';
+
 const api = axios.create({
-  // Reemplaza la URL que tengas por la de Render entre comillas:
-  baseURL: 'https://contratos-gestion.onrender.com', 
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
 });
 
 export default api;
