@@ -1,14 +1,16 @@
-import axios from 'axios';
+// Importa tu instancia personalizada (ajusta la ruta según la ubicación de tu archivo)
+import api from '../services/api'; 
 
-// 1. Asegúrate de incluir 'https://' completo al inicio
-const API_URL = 'https://contratos-gestion.onrender.com';
+const handleLogin = async (e) => {
+  e.preventDefault();
+  
+  const formData = new URLSearchParams();
+  formData.append('username', username);
+  formData.append('password', password);
 
-const api = axios.create({
-  baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  },
-});
+  // Usa "api.post" para que respete https://contratos-gestion.onrender.com
+  const response = await api.post('/api/auth/login', formData);
+};
 
 export default api;
 
